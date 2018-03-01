@@ -42,7 +42,7 @@ public class Chapter411ApplicationTests {
 
 	@Test
 	public void test_003(){
-		System.out.println(JSON.toJSONString(userService.findByUserId(1L)));
+		System.out.println(JSON.toJSONString(userService.findByUserId(3L)));
 	}
 
 	@Test
