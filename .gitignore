@@ -3,3 +3,7 @@ mvnw
 mvnw.cmd
 *.iml
 target/*
+
+.idea
+.idea/
+pom.xml
