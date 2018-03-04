@@ -1,6 +1,7 @@
 package com.frank.chapter411.service;
 
 import com.frank.chapter411.domain.User;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
@@ -22,4 +23,12 @@ public interface UserService {
     Page<User> findByUserName(String userName, PageRequest pageRequest);
 
     List<User> findByUserPhone(String userPhone);
+
+    List<User> findByUserAge(Integer age);
+
+    List<User> searchUsers(Integer pageNumber,
+                           Integer pageSize,
+                           String searchContent);
+
+    Iterable<User> search(QueryBuilder queryBuilder);
 }

@@ -2,6 +2,7 @@ package com.frank.chapter410.service;
 
 import com.frank.chapter410.domain.User;
 import com.frank.chapter410.repository.UserRepository;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -47,5 +48,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findByUserPhone(String userPhone) {
         return userRepository.findByUserPhone(userPhone);
+    }
+
+    @Override
+    public Iterable<User> search(QueryBuilder query)
+    {
+        return userRepository.search(query);
     }
 }

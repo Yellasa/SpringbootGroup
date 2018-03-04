@@ -3,6 +3,11 @@ package com.frank.chapter410;
 import com.alibaba.fastjson.JSON;
 import com.frank.chapter410.domain.User;
 import com.frank.chapter410.service.UserService;
+import org.elasticsearch.action.search.SearchRequestBuilder;
+import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.client.Client;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.SearchHits;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +27,8 @@ public class Chapter410ApplicationTests {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private Client client;
 	@Test
 	public void test_001(){
 		List<User> userList = new ArrayList<>();
@@ -53,6 +60,18 @@ public class Chapter410ApplicationTests {
 	@Test
 	public void test_005(){
 		userService.deleteByUserId(1L);
+	}
+
+
+	@Test
+	public void testCC(){
+		SearchRequestBuilder responsebuilder = client.prepareSearch("yttest").setTypes("userb");
+		SearchResponse myresponse= responsebuilder.setQuery(QueryBuilders.termsQuery("age", "18", "8", "99")).setExplain(true).execute().actionGet();
+		SearchHits hits = myresponse.getHits();
+		for (int i = 0; i < hits.getHits().length; i++) {
+			System.out.println(hits.getHits()[i].getSourceAsString());}
+
+
 	}
 
 }

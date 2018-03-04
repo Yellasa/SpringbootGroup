@@ -7,7 +7,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
  * @author jianweilin
  * @date 2017/10/24
  */
-@Document(indexName = "yttest", type = "userA")
+@Document(indexName = "yttest", type = "usera")
 public class User {
     @Id
     private Long id;

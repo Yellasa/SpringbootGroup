@@ -27,4 +27,6 @@ public interface UserRepository extends ElasticsearchRepository<User,Long> {
      * @return  用户列表
      */
     List<User> findByUserPhone(String userPhone);
+
+    List<User> findByAge(Integer age);
 }
